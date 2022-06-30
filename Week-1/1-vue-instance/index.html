@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://unpkg.com/vue@3"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -20,7 +21,18 @@
             :owner="owner">
             {{ eduflow.title }}
         </a>
-        <!-- iki türlüde kullanılıyor ":" yada "v-bind:" -->
+        <!-- attribute larda iki türlüde kullanılabiliyor ":" yada "v-bind:" -->
+
+        <button v-on:click="changeTitle('Bu birinci buton')">Title değiştir</button>
+        <button v-on:click="changeTitle('Bu ikinci buton')">Title değiştir 2</button>
+        <!-- fonksiyona parametre göndermiyorsa changeTitle() olarak belirtilmesine gerek yok -->
+
+        <div 
+            @mousemove="updateCoords('mouseMoove', $event)" 
+            class="box" 
+            @click="changeTitle('Box üzerinden gelen')">
+            <span>{{ coords.x }},{{ coords.y }}</span>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>

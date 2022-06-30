@@ -10,8 +10,24 @@ const app = Vue.createApp({
                 alt: "muferadat-ve-aciklamalar"
             },
             owner: "emron",
+            coords: {
+                x: 0,
+                y: 0
+            }, 
         };
     },
+    methods: {
+        changeTitle(title) {
+            this.title = title;
+        },
+        updateCoords(message, event) {
+            console.log(message, event.x, event.y);
+            this.coords = {
+                x : event.x,
+                y : event.y,
+            }
+        }
+    }
 }).mount("#app");
 
 // Vue2 version

@@ -13,8 +13,13 @@
         <div class="container">
             <div class="row mt-5">
                 <div class="col-4 offset-4 p-2 card">
-                    <pre>
+                    <input class="form-control mb-2" type="text" v-model="search">
+                    <button class="btn btn-sm btn-primary" @click="searchList">Ara</button>
+                    <pre class="mt-3">
                         {{ itemList }}
+                    </pre>
+                    <pre class="mt-3">
+                        {{ filteredList }}
                     </pre>
                 </div>
             </div>

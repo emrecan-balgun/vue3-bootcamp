@@ -9,10 +9,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app">
-        <div class="box border">
+    <div id="app" >
+        <div class="box" :class="boxClasses" :style="{ backgroundColor: bgColor }">
 
         </div>
+        <br>
+        <input type="text" v-model="bgColor">
+        {{ bgColor }}
+        <br><br>
+        <!-- <button @click="showBorder = !showBorder">Border Ekle/Çıkar</button>
+        <button @click="redBG = !redBG">BG Kırmızı Yap/Yapma</button> -->
     </div>
     <script src="app.js"></script>
 </body>

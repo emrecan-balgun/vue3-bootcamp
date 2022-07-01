@@ -21,12 +21,19 @@
                     <!-- <h1 v-else class="text-info">Sonra gözükecek</h1> -->
                     <!-- aynı düzeyde bulundukları için if else yapısı şeklinde de kullanılabiliyor -->
                     <hr>
+                    
                     <h3 :class="counterBoxClass">{{ counter }}</h3> 
                     <button class="btn btn-sm btn-success" @click="counter++">Arttır</button>
                     <button class="btn btn-sm btn-danger" @click="counter--">Azalt</button>
                     <p v-if="counter > 0">Counter Pozitif</p>
                     <p v-else-if="counter < 0">Counter Negatif</p>
                     <p v-else>Counter Nötr</p>
+
+                    <hr>
+
+                    <p v-show="counter > 0">Counter Pozitif</p>
+                    <p v-show="counter < 0">Counter Negatif</p>
+                    <p v-show="counter == 0">Counter Nötr</p>
                 </div>
             </div>
         </div>

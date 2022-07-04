@@ -1,10 +1,9 @@
 <template>
-    <!-- <small class="d-flex justify-content-end green mt-2">{{ todoList.length }} adet todo var.</small> -->
-    <small class="d-flex justify-content-end green mt-2">{{ itemCount }} adet todo var.</small>
+  <!-- <small class="mt-2 d-flex justify-content-end green"> {{ todoList.length }} adet todo vardır</small> -->
+  <small class="mt-2 d-flex justify-content-end green"> {{ itemCount }} adet todo vardır</small>
 </template>
-
 <script>
-    export default {
-        props: ["itemCount"]
-    }
+export default {
+  props: ["itemCount"]
+};
 </script>

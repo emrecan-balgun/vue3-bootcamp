@@ -27,6 +27,13 @@ export default {
       itemsList: []
     }
   },
+  provide() {
+    return {
+      itemsList: this.itemsList,
+      onSave: this.onSave,
+      onDelete: this.onDelete
+    }
+  },
   mounted() {
     axios.get("http://localhost:3000/items").then(items_response => {
       console.log('items_response', items_response);

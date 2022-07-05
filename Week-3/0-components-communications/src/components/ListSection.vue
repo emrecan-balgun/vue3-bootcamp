@@ -1,11 +1,12 @@
 <template>
     <ul>
-        <li v-for="user in data" :key="user">{{ user }}</li>
+        <li v-for="user in userList" :key="user">{{ user }}</li>
     </ul>
 </template>
 
 <script>
 export default {
-    props: ["data"],
+    // props: ["data"],
+    inject: ["userList"]
 }
 </script>

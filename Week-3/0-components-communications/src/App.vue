@@ -1,16 +1,20 @@
 <template>
   <div class="container">
-    <input type="text" :value="userData">
-    <button @click="userData = 'Yeni değer'" >Set Data</button>
+    <UserSection :data="userList" @new-item="userList.push($event)" />
   </div>
 </template>
 
 <script>
+import UserSection from "@/components/UserSection.vue";
+
 export default {
-  data() {
-    return {
-      userData: null
+    data() {
+        return {
+            userList: ["Emre", "Tayfun", "Gökhan", "Elif", "Aslı"]
+        };
+    },
+    components: { 
+      UserSection
     }
-  }
 }
 </script>

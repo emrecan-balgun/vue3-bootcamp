@@ -1,16 +1,23 @@
 <template>
     <div class="container">
         <div class="header">
-            <h1>Modal Title</h1>
+            <slot name="title" />
         </div>
-
-        <div class="content">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi, maiores. Inventore omnis incidunt reiciendis minus modi nihil laudantium obcaecati doloribus!
+        <hr />
+        <!-- <div class="content my-2" v-html="content"></div> -->
+        <div class="content my-2">
+            <slot name="content" />
         </div>
-
-        <div class="footer">
+        <slot />
+        <div class="footer text-right">
             <button>Kapat</button>
-            <button class="green">Kaydet</button>
+            <button @click="onSave" class="green">Kaydet</button>
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    props: [ "title", "content", "onSave"]
+}
+</script>

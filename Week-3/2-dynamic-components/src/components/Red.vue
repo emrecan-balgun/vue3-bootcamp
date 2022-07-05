@@ -1,3 +1,12 @@
 <template>
-    <h3 class="bg-red text-white">Red component</h3>
+    <h3 class="bg-red text-white">{{ msg }}</h3>
 </template>
+
+<script>
+export default {
+    props: ["msg"],
+    mounted() {
+        console.log("Blue mounted")
+    }
+}
+</script>

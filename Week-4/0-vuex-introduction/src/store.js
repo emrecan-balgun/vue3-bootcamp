@@ -31,7 +31,25 @@ const store = createStore({
             delete user.password; // ekranda password göstermemek için siliyoruz (gizli alan olduğu için)
             return user;
         }
-    }
+    },
+    mutations: { // senkron çalışır
+        newItem(state, item) {
+            state.itemList.push(item);
+        },
+        // changeUser(state, payload) {}
+    },
+    actions: { // asenkron çalışır
+        // newItem(context, item) { // asenkron bir şey varsa başına async yazılır
+        newItem({ commit }, item) { // asenkron bir şey varsa başına async yazılır // context bir objedir, objenin içerisinden commit aldık
+            console.log("item => ", item);
+            setTimeout(() => { // asenkron bir şey varsa başına await yazılır
+                // context.state
+                // context.dispatch
+                // context.commit("newItem", item); // mutationda ki yazdığımız fonksiyonu çağırır
+                commit("newItem", item); // mutationda ki yazdığımız fonksiyonu çağırır
+            }, 2000);
+        }
+    },
 })
 
 export default store;

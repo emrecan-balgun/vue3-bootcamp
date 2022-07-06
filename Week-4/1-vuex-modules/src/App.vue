@@ -1,26 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <p>
+    {{ $store.state.mainName }}
+  </p>
+
+  <p>
+    {{ $store.state.musteri.contactName }}
+  </p>
+
+  <p>
+    {{ musteriAdi }}
+  </p>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  created() {
+    console.log(this.$store.getters["musteri/_contactName"]);
+  },
+  computed: {
+    ...mapGetters({
+      musteriAdi : "musteri/_contactName"
+    })
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

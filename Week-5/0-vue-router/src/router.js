@@ -4,7 +4,7 @@ import About from '@/views/About';
 
 const routes = [
     {
-        path: "/",
+        path: "/public",
         component: Home
         // component: () => import('@/views/Home')
     },

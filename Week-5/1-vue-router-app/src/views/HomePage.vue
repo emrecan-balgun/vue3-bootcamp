@@ -14,8 +14,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="bookmark in bookmarkList" :key="bookmark.id">
-                <th scope="row">{{ bookmark.id }}</th>
+                <tr v-for="(bookmark, index) in bookmarkList" :key="bookmark.id">
+                <th scope="row">{{ index + 1 }}</th>
                 <td>{{ bookmark.title }}</td>
                 <td>
                     <a :href="bookmark.url" target="_blank">{{ bookmark.url }}</a>

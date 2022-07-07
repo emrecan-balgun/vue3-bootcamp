@@ -9,15 +9,19 @@
                 <th scope="col">#</th>
                 <th scope="col">Başlık</th>
                 <th scope="col">URL</th>
+                <th scope="col">Açıklama</th>
                 <th scope="col">Sil</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="i in 10" :key="i">
-                <th scope="row">1</th>
-                <td>Vue3 Dokümantasyon</td>
-                <td>https://v3.vuejs.org</td>
-                <td><button class="btn btn-sm btn-danger">Sil</button></td>
+                <tr v-for="bookmark in bookmarkList" :key="bookmark.id">
+                <th scope="row">{{ bookmark.id }}</th>
+                <td>{{ bookmark.title }}</td>
+                <td>
+                    <a :href="bookmark.url" target="_blank">{{ bookmark.url }}</a>
+                </td>
+                <td>{{ bookmark.description }}</td>
+                <td><button class="btn btn-sm btn-danger" @click="deleteBookmark(bookmark)">Sil</button></td>
                 </tr>
             </tbody>
         </table>
@@ -26,10 +30,25 @@
 
 <script>
 export default {
+    data() {
+        return {
+            bookmarkList: []
+        }
+    },
     created() {
         this.$appAxios.get("/bookmarks").then(bookmarks_list_response => {
-            console.log(bookmarks_list_response);
+            this.bookmarkList = bookmarks_list_response.data || [];
         })
+    },
+    methods: {
+        deleteBookmark(bookmark) {
+            this.$appAxios.delete(`/bookmarks/${bookmark.id}`).then(delete_response => {
+                console.log("delete_response", delete_response);
+                if(delete_response.status == 200) {
+                    this.bookmarkList = this.bookmarkList.filter(i => i.id !== bookmark.id);
+                }
+            })
+        }
     }
 }
 </script>

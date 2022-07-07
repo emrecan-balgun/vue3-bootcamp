@@ -23,3 +23,13 @@
         </table>
     </div>
 </template>
+
+<script>
+export default {
+    created() {
+        this.$appAxios.get("/bookmarks").then(bookmarks_list_response => {
+            console.log(bookmarks_list_response);
+        })
+    }
+}
+</script>

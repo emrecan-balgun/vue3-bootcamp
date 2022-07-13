@@ -15,6 +15,9 @@
 </template>
 
 <script>
+// import CryptoJS from 'crypto-js';
+// import AES from"crypto-js/aes";
+
 export default {
   data() {
     return {
@@ -27,7 +30,17 @@ export default {
   },
   methods: {
     onSave() {
-      console.log(this.userData);
+      const key = "booklike123!456?"
+      const password = this.$CryptoJS.AES.encrypt(this.userData.password, key).toString();
+
+      this.$appAxios.post("/users", { ...this.userData, password }).then(registered_user_response => {
+        console.log("registered_user_response: ", registered_user_response);
+        this.$router.push({ name: "HomePage" });
+      })
+
+      // const decryptedText = this.$CryptoJS.AES.decrypt(cryptedPassword, key).toString(this.$CryptoJS.enc.Utf8)
+      // console.log("decryptedText", decryptedText)
+      // console.log(this.userData);
     }
   }
 }

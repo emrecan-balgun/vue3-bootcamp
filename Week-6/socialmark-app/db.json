@@ -1,5 +1,18 @@
 {
-    "users": [],
-    "bookmarks": [],
-    "categories": []
+  "users": [
+    {
+      "username": "emrecan balgün",
+      "fullname": "emron",
+      "password": "U2FsdGVkX19wi9MHgqvsKAuNz4jN7KTIz3JeuWpKFek=",
+      "id": 1
+    },
+    {
+      "username": "gökhan kandemir",
+      "fullname": "kablosuzkedi",
+      "password": "U2FsdGVkX1+V3JCWmvfImvH+NRPT6SWeQucM8n7k3AU=",
+      "id": 2
+    }
+  ],
+  "bookmarks": [],
+  "categories": []
 }

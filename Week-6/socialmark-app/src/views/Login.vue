@@ -37,6 +37,6 @@ export default {
       }).catch(e => console.log(e))
       // .finally(() => this.loader = false);
     }
-  }
+  },
 }
 </script>

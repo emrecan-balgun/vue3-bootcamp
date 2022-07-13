@@ -1,15 +1,15 @@
 {
   "users": [
     {
-      "username": "emrecan balgün",
-      "fullname": "emron",
-      "password": "U2FsdGVkX19wi9MHgqvsKAuNz4jN7KTIz3JeuWpKFek=",
+      "username": "emron",
+      "fullname": "emrecan balgün",
+      "password": "a6f0a6b0a820a76aa38ebbd826eb449533fa56c5",
       "id": 1
     },
     {
-      "username": "gökhan kandemir",
-      "fullname": "kablosuzkedi",
-      "password": "U2FsdGVkX1+V3JCWmvfImvH+NRPT6SWeQucM8n7k3AU=",
+      "username": "kablosuzkedi",
+      "fullname": "gökhan kandemir",
+      "password": "e14ef7771eb6d607f429653ecdbc1c9f49388686",
       "id": 2
     }
   ],

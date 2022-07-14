@@ -27,7 +27,7 @@
             </div>
             <div class="text-xs text-gray-400 mt-2 flex justify-between">
             <a href="#" class="hover:text-black text-capitalize">{{ userName }}</a>
-            <span>{{ item.created_at }}</span>
+            <span>{{ time }}</span>
             </div>
         </div>
         <div class="bg-red-200 p-1 text-red-900 text-center text-sm">{{ categoryName }}</div>
@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
     props: {
         item: {
@@ -49,6 +51,9 @@ export default {
         },
         userName() {
             return this?.item?.user?.fullname || "-";
+        },
+        time() {
+            return moment(this?.item?.created_at || '-').startOf('day').fromNow(); 
         }
     }
 }

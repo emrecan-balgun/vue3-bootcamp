@@ -5,8 +5,15 @@
       "fullname": "emrecan balgün",
       "password": "a6f0a6b0a820a76aa38ebbd826eb449533fa56c5",
       "id": 1,
-      "likes": [],
-      "bookmarks": []
+      "likes": [
+        4,
+        8
+      ],
+      "bookmarks": [
+        1,
+        2,
+        3
+      ]
     },
     {
       "username": "kablosuzkedi",

@@ -3,9 +3,6 @@
     <div class="flex flex-row">
         <side-bar />
         <!-- <component :is="$route.meta.componentName" :items="bookmarkList" /> -->
-        <div class="socket">
-            <input type="text" @keydown.enter="SEND_MESSAGE" />
-        </div>
     </div>
 </template>
 
@@ -31,15 +28,6 @@ export default {
     mounted() {
         this.$socket = io("http://localhost:2018");
         this.$socket.on("WELCOME_MESSAGE", this.WELCOME_MESSAGE);
-    },
-    methods: {
-        WELCOME_MESSAGE(data) {
-            console.log(data);
-        },
-        SEND_MESSAGE(e) {
-            // console.log(e.target.value);
-            this.$socket.emit("SEND_MESSAGE", e.target.value);
-        }
     }
 }
 </script>

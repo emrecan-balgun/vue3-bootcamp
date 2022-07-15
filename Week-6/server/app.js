@@ -25,5 +25,11 @@ server.listen(PORT, () => {
         socket.on("SEND_MESSAGE", (data) => {
             console.log("Gelen mesaj: ", data);
         })
+
+        socket.on("NEW_BOOKMARK_EVENT", (bookmark) => {
+            // io.emit("NEW_BOOKMARK_ADDED", bookmark)
+            // Gönderen hariç herkese bookmark bilgisini gönder
+            io.broadcast.emit("NEW_BOOKMARK_ADDED", bookmark);
+        })
     });
 })

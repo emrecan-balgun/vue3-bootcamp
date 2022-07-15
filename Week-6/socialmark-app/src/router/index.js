@@ -1,6 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import store from "../store";
-
 const routes = [
   {
     name: "HomePage",
@@ -45,7 +44,7 @@ const routes = [
       componentName: "userSettings"
     },
     component: () => import("@/views/Account")
-  },
+  }
 ];
 
 const router = createRouter({

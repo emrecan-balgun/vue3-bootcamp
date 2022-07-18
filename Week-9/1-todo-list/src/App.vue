@@ -1,31 +1,27 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
-</template>
+  <div class="w-screen h-screen bg-gray-400 pt-10">
+    <div class="bg-gray-700 rounded-md shadow-md text-white w-1/3 mx-auto p-3">
+      <h3 class="text-center text-2xl">Todo List</h3>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+      <section class="mt-4">
+        <input type="text" placeholder="Ne eklemek istiyorsunuz?" class="w-full p-2 bg-gray-700 border-[1px] border-gray-400 rounded-md outline-none">
+      </section>
+
+        <section class="mt-4">
+          <div class="flex justify-between items-center even:bg-gray-600 px-2 p-1">
+            <label for="completed">
+              <input type="checkbox" id="completed" class="mr-2" />
+              <span class="text-lg">Todo 1</span>
+            </label>
+            <button class="bg-indigo-500 px-2 py-1 rounded-md active:bg-indigo-800">Sil</button>
+          </div>
+          <div class="text-green-400">
+            Tamamlanmış:
+          </div>
+          <div class="text-red-400">
+            Tamamlanmamış:
+          </div>
+        </section>
+    </div>
+  </div>
+</template>

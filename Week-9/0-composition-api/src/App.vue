@@ -13,10 +13,13 @@
         <button @click="counter = 0">Sıfırla</button>
     </div>
   </div>
+  <hr />
+  <input type="text" v-model="searchText">
+  <p v-if="isTyping">Şu an yazıyor...</p>
 </template>
 
 <script>
-import { ref, computed, watch } from "vue"; // ref: reactive effect
+import { ref, computed, watch, watchEffect } from "vue"; // ref: reactive effect
 
 export default {
   // data() {
@@ -32,6 +35,7 @@ export default {
     const titleLengthMessage = computed(() => title.value.length + " adet karakter yazdınız.");
     // console.log("titleLengthMessage => ", titleLengthMessage.value);
 
+    // !********************************************************************************************************! //
     const show = ref(false);
     console.log("show => ", show.value);
     // const toggleIt = () => {}
@@ -39,6 +43,7 @@ export default {
       show.value = !show.value;
     }
 
+    // !********************************************************************************************************! //
     const counter = ref(0);
     const oddOrEven = computed(() => counter.value % 2 == 0 ? '(Çift sayı)' : '(Tek sayı)');
     // watch(counter, () => {}, { deep: true })
@@ -47,13 +52,42 @@ export default {
       console.log(oldO, " -> ", newO)
     })
 
+    // !********************************************************************************************************! //
+    const searchText = ref("");
+    const isTyping = ref(false);
+
+    // watch(searchText, () => {
+    //   if(searchText.value.length > 0) {
+    //     isTyping.value = true;
+    //   }
+
+    //   setTimeout(() => {
+    //     isTyping.value = false;
+    //   }, 1500);
+    // })
+
+    const stop = watchEffect((onInvalidate) => {
+      if(searchText.value.length > 0) {
+        isTyping.value = true;
+      }
+
+      const typing = setTimeout(() => {
+        isTyping.value = false;
+        stop();
+      }, 1500);
+
+      onInvalidate(() => clearTimeout(typing));
+    })
+
     return {
       title,
       show,
       toggleIt,
       titleLengthMessage,
       counter,
-      oddOrEven
+      oddOrEven,
+      searchText,
+      isTyping,
     }
   }
 }

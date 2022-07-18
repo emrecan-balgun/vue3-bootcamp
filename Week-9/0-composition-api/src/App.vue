@@ -1,31 +1,43 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <h3>{{ title }}</h3>
+  <input type="text" v-model="title" />
+  {{ titleLengthMessage }}
+  <button @click="toggleIt">Toggle</button>
+  <p v-if="show">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis porro quisquam commodi consequuntur corrupti fugit beatae consectetur consequatur, laborum aliquam.</p>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+<script>
+import { ref, computed } from "vue"; // ref: reactive effect
+
+export default {
+  // data() {
+  //   return {
+  //     title: "Test"
+  //   }
+  // },
+  setup() {
+    const title = ref("This is test title");
+    const show = ref(false);
+    console.log("show => ", show.value);
+
+    // const toggleIt = () => {}
+    function toggleIt() {
+      show.value = !show.value;
+    }
+
+    // const titleLengthMessage = computed(() => {
+    //   return title.value.length + " adet karakter yazdınız.";
+    // })
+    const titleLengthMessage = computed(() => title.value.length + " adet karakter yazdınız.");
+
+    // console.log("titleLengthMessage => ", titleLengthMessage.value);
+
+    return {
+      title,
+      show,
+      toggleIt,
+      titleLengthMessage
+    }
+  }
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+</script>

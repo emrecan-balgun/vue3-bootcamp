@@ -19,66 +19,18 @@
 </template>
 
 <script>
-import { ref, computed, watch, watchEffect } from "vue"; // ref: reactive effect
+import Title from './composables/Title.js';
+import Toggle from './composables/Toggle.js';
+import Counter from './composables/Counter.js';
+import Search from './composables/Search.js';
 
 export default {
-  // data() {
-  //   return {
-  //     title: "Test"
-  //   }
-  // },
   setup() {
-    const title = ref("This is test title");
-    // const titleLengthMessage = computed(() => {
-    //   return title.value.length + " adet karakter yazdınız.";
-    // })
-    const titleLengthMessage = computed(() => title.value.length + " adet karakter yazdınız.");
-    // console.log("titleLengthMessage => ", titleLengthMessage.value);
-
-    // !********************************************************************************************************! //
-    const show = ref(false);
-    console.log("show => ", show.value);
-    // const toggleIt = () => {}
-    function toggleIt() {
-      show.value = !show.value;
-    }
-
-    // !********************************************************************************************************! //
-    const counter = ref(0);
-    const oddOrEven = computed(() => counter.value % 2 == 0 ? '(Çift sayı)' : '(Tek sayı)');
-    // watch(counter, () => {}, { deep: true })
-    // watch([counter, oddOrEven], (newValue, oldValue) => {
-    watch([counter, oddOrEven], ([newC, newO], [oldC, oldO]) => {
-      console.log(oldO, " -> ", newO)
-    })
-
-    // !********************************************************************************************************! //
-    const searchText = ref("");
-    const isTyping = ref(false);
-
-    // watch(searchText, () => {
-    //   if(searchText.value.length > 0) {
-    //     isTyping.value = true;
-    //   }
-
-    //   setTimeout(() => {
-    //     isTyping.value = false;
-    //   }, 1500);
-    // })
-
-    const stop = watchEffect((onInvalidate) => {
-      if(searchText.value.length > 0) {
-        isTyping.value = true;
-      }
-
-      const typing = setTimeout(() => {
-        isTyping.value = false;
-        stop();
-      }, 1500);
-
-      onInvalidate(() => clearTimeout(typing));
-    })
-
+    const { title, titleLengthMessage } = Title();
+    const { show, toggleIt } = Toggle();
+    const { counter, oddOrEven } = Counter();
+    const { searchText, isTyping } = Search();
+    
     return {
       title,
       show,

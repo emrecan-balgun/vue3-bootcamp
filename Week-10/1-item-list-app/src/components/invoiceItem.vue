@@ -1,5 +1,5 @@
 <template>
-    <div v-for="i in 5" :key="i" class="table-body-item group">
+    <div class="table-body-item group">
         <input autocomplete="off" type="text" class="input w-[200px] mr-2" />
         <input autocomplete="off" type="text" class="input w-[50px] mr-2" />
         <input autocomplete="off" type="text" class="input w-[100px] mr-2" />

@@ -6,7 +6,7 @@
         <span class="p-1 w-[100px]">Toplam</span>
     </div>
     <div class="table-body">
-        <invoice-item />
+        <invoice-item v-for="i in 5" :key="i" />
         <button class="mt-4 add-item-button">
         <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
             <path d="M0 0h24v24H0V0z" fill="none" />

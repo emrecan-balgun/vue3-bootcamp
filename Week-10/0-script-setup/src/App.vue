@@ -4,21 +4,32 @@
   <button @click="increase">{{ counter }}</button>
   <hr />
   <oddOrEven :counter="counter" @odd-event="alertMe" />
+  <h1>User App</h1>
+  <input type="text" v-model="state.personal.name">
+  <input type="text" v-model="state.personal.lname">
+  {{ state.personal }}
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { watch, reactive } from 'vue';
+// beforeCreate() created() ve data() yerine geçer (setup)
 import oddOrEven from './components/oddOrEven.vue';
+import Utils from './composables/Utils.js';
+const { title, counter, increase, alertMe } = Utils();
 
-  const title = ref("Test");
-  const counter = ref(0);
-
-  const increase = () => {
-    counter.value++; // ref ile tutulduğu için value üzerinden ulaşılıyor
+// objelerde ref kullanımı önerilmez onun yerine reactive kullanılır
+// UserApp
+const state = reactive({
+  personal: {
+    name: null,
+    lname: null,
   }
+})
 
-  const alertMe = (info) => {
-    console.log(info);
-  }
+watch(
+  () => JSON.parse(JSON.stringify(state.personal)), // bu şekillde kullanılıyor watch ederken
+  (newPersonal, oldPersonal) => {
+  console.log(oldPersonal, " => ", newPersonal);
+})
 
 </script>

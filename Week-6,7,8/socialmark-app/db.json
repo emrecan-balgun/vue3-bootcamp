@@ -29,6 +29,11 @@
       "userId": 1,
       "bookmarkId": 16,
       "id": 5
+    },
+    {
+      "userId": 1,
+      "bookmarkId": 1,
+      "id": 6
     }
   ],
   "user_bookmarks": [
@@ -41,6 +46,11 @@
       "userId": 1,
       "bookmarkId": 16,
       "id": 5
+    },
+    {
+      "userId": 1,
+      "bookmarkId": 8,
+      "id": 6
     }
   ],
   "bookmarks": [

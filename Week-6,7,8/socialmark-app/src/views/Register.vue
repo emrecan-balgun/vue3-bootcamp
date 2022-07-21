@@ -14,30 +14,27 @@
     </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      userData: {
-        username: null,
-        fullname: null,
-        password: null
-      }
-    }
-  },
-  methods: {
-    onSave() {
-      const password = this.$CryptoJS.HmacSHA1(this.userData.password, this.$store.getters._saltKey).toString();
+<script setup>
+import { ref, inject } from 'vue';
+import { useStore } from 'vuex';
+import CryptoJS from 'crypto-js';
+import { useRouter } from 'vue-router';
 
-      this.$appAxios.post("/users", { ...this.userData, password }).then(registered_user_response => {
+const appAxios = inject("appAxios");
+const store = useStore();
+const router = useRouter();
+const userData = ref({
+  fullname: null,
+  username: null,
+  password: null
+});
+
+const onSave = () => {
+      const password = CryptoJS.HmacSHA1(userData.value.password, store.getters._saltKey).toString();
+
+      appAxios.post("/users", { ...userData.value, password }).then(registered_user_response => {
         console.log("registered_user_response: ", registered_user_response);
-        this.$router.push({ name: "HomePage" });
+        router.push({ name: "HomePage" });
       })
-
-      // const decryptedText = this.$CryptoJS.AES.decrypt(cryptedPassword, key).toString(this.$CryptoJS.enc.Utf8)
-      // console.log("decryptedText", decryptedText)
-      // console.log(this.userData);
     }
-  }
-}
 </script>

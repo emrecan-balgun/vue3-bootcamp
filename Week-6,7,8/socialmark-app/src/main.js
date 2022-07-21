@@ -18,7 +18,7 @@ app.component("appBookmarkList", appBookmarkList);
 app.use(router);
 app.use(VueCryptojs);
 app.use(store);
-app.config.globalProperties.$appAxios = appAxios;
+// app.config.globalProperties.$appAxios = appAxios;
 // app.config.globalProperties.$log = console.log;
 // app.config.globalProperties.$socket = socket;
 app.provide("socket", socket);

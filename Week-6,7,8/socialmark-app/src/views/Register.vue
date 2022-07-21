@@ -32,8 +32,7 @@ const userData = ref({
 const onSave = () => {
       const password = CryptoJS.HmacSHA1(userData.value.password, store.getters._saltKey).toString();
 
-      appAxios.post("/users", { ...userData.value, password }).then(registered_user_response => {
-        console.log("registered_user_response: ", registered_user_response);
+      appAxios.post("/users", { ...userData.value, password }).then(() => {
         router.push({ name: "HomePage" });
       })
     }

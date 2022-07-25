@@ -6,7 +6,7 @@ const { create, index } = require('../controllers/Projects');
 const router = express.Router();
 
 router.get("/", index);
-router.get("/", create);
+router.post("/", create);
 
 module.exports = {
     router,
